@@ -118,7 +118,7 @@ def run_camera(stframe_keypoints, stframe_filter, filter_option):
         stframe_filter.image(filter_image, channels="BGR", caption="Screen with filter")
 
     camera.release()
-    cv2.destroyAllWindows()
+    # cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":
