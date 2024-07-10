@@ -2,7 +2,7 @@ keras==3.4.1
 matplotlib==3.7.2
 numpy
 opencv-python-headless
-pandas==2.2.2
-scikit_learn==1.2.2
+pandas>=2.2.2
+scikit_learn>=1.2.2
 streamlit>=1.32.0
 tensorflow==2.16.2
