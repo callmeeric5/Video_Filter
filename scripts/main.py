@@ -10,6 +10,12 @@ from apply_animal_filters import (
 
 
 def main():
+    # import tensorflow as tf
+    # import streamlit as st
+    # import keras
+    # st.write(f'tensorflow: {tf.__version__}')
+    # st.write(f'streamlit: {st.__version__}')
+    # st.write(f'keras: {keras.__version__}')
     st.title("Pick your favorite filter!")
 
     st.sidebar.title("Controls")
