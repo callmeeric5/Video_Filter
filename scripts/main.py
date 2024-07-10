@@ -1,8 +1,13 @@
 import streamlit as st
 import cv2
 import numpy as np
-from cnn_model import load_model  # Ensure this is correctly importing your model loading function
-from apply_animal_filters import apply_filters  # Ensure this is correctly importing your filter application function
+from cnn_model import (
+    load_model,
+)  # Ensure this is correctly importing your model loading function
+from apply_animal_filters import (
+    apply_filters,
+)  # Ensure this is correctly importing your filter application function
+
 
 def main():
     st.title("Pick your favorite filter!")
@@ -13,22 +18,32 @@ def main():
 
     filter_option = st.sidebar.selectbox(
         "Choose your filter",
-        ["bear.png", "cat.png", "dog.png", "output.PNG", "pig.png"],
-        key="filter_option"
+        ["bear.png", "cat.png", "dog.png", "pig.png"],
+        key="filter_option",
     )
 
     # Display two initial empty windows side by side
     stframe_keypoints = st.empty()
     stframe_filter = st.empty()
-    
-    empty_image = np.zeros((1080, 1920, 3), dtype=np.uint8)  # Set window size to Full HD
-    stframe_keypoints.image(empty_image, channels="BGR", caption="Screen with facial Keypoints predicted", use_column_width=True)
-    stframe_filter.image(empty_image, channels="BGR", caption="Screen with filter", use_column_width=True)
-    
+
+    empty_image = np.zeros(
+        (1080, 1920, 3), dtype=np.uint8
+    )  # Set window size to Full HD
+    stframe_keypoints.image(
+        empty_image,
+        channels="BGR",
+        caption="Screen with facial Keypoints predicted",
+        use_column_width=True,
+    )
+    stframe_filter.image(
+        empty_image, channels="BGR", caption="Screen with filter", use_column_width=True
+    )
+
     if start_button:
         run_camera(stframe_keypoints, stframe_filter, filter_option)
     elif stop_button:
         st.stop()
+
 
 def run_camera(stframe_keypoints, stframe_filter, filter_option):
     model = load_model("models/CNN")
@@ -98,6 +113,7 @@ def run_camera(stframe_keypoints, stframe_filter, filter_option):
 
     camera.release()
     cv2.destroyAllWindows()
+
 
 if __name__ == "__main__":
     main()
